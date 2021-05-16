@@ -3,11 +3,11 @@ resource "aws_dynamodb_table" "playbooks" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 5
   write_capacity = 5
-  hash_key       = "CustomerId"
+  hash_key       = "OrganisationId"
   range_key      = "PlaybookId"
 
   attribute {
-    name = "CustomerId"
+    name = "OrganisationId"
     type = "S"
   }
 
@@ -24,11 +24,11 @@ resource "aws_dynamodb_table" "loadtests" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 5
   write_capacity = 5
-  hash_key       = "CustomerId"
+  hash_key       = "OrganisationId"
   range_key      = "LoadtestId"
 
   attribute {
-    name = "CustomerId"
+    name = "OrganisationId"
     type = "S"
   }
 
