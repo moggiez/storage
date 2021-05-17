@@ -42,9 +42,23 @@ resource "aws_dynamodb_table" "loadtests" {
     type = "S"
   }
 
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
   global_secondary_index {
     name            = "PlaybookLoadtestIndex"
     hash_key        = "PlaybookId"
+    range_key       = "LoadtestId"
+    write_capacity  = 5
+    read_capacity   = 5
+    projection_type = "KEYS_ONLY"
+  }
+
+  global_secondary_index {
+    name            = "UsersLoadtestsIndex"
+    hash_key        = "UserId"
     range_key       = "LoadtestId"
     write_capacity  = 5
     read_capacity   = 5
