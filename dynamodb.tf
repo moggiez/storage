@@ -47,6 +47,16 @@ resource "aws_dynamodb_table" "loadtests" {
     type = "S"
   }
 
+  attribute {
+    name = "CreatedAtHour"
+    type = "S"
+  }
+
+  attribute {
+    name = "MetricsSavedDate"
+    type = "S"
+  }
+
   global_secondary_index {
     name            = "PlaybookLoadtestIndex"
     hash_key        = "PlaybookId"
@@ -60,6 +70,15 @@ resource "aws_dynamodb_table" "loadtests" {
     name            = "UsersLoadtestsIndex"
     hash_key        = "UserId"
     range_key       = "LoadtestId"
+    write_capacity  = 5
+    read_capacity   = 5
+    projection_type = "KEYS_ONLY"
+  }
+
+  global_secondary_index {
+    name            = "CreatedAtHourIndex"
+    hash_key        = "CreatedAtHour"
+    range_key       = "MetricsSavedDate"
     write_capacity  = 5
     read_capacity   = 5
     projection_type = "KEYS_ONLY"
