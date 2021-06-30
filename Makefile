@@ -15,3 +15,6 @@ fmt:
 
 undeploy:
 	terraform destroy
+
+build:
+	echo "Nothing to build!"
