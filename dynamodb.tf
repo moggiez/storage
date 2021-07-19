@@ -1,24 +1,3 @@
-resource "aws_dynamodb_table" "playbooks" {
-  name           = "playbooks"
-  billing_mode   = "PROVISIONED"
-  read_capacity  = 5
-  write_capacity = 5
-  hash_key       = "OrganisationId"
-  range_key      = "PlaybookId"
-
-  attribute {
-    name = "OrganisationId"
-    type = "S"
-  }
-
-  attribute {
-    name = "PlaybookId"
-    type = "S"
-  }
-
-  // Playbook
-}
-
 resource "aws_dynamodb_table" "loadtests" {
   name           = "loadtests"
   billing_mode   = "PROVISIONED"
